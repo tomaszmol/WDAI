@@ -8,9 +8,9 @@
       .container {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px; /* Odstępy między kwadratami */
+        gap: 10px;
         max-width: 320px;
-        margin: auto;
+        margin: 10px auto;
       }
       .box {
         width: 100px;
@@ -28,9 +28,8 @@
       .four {
         background-color: #0d0d0d;
       }
-      /* Obrazek w zastępstwie kwadratu */
       .image {
-        background-image: url("images/book.png"); /* Link do obrazka */
+        background-image: url("images/book.png");
         background-size: contain;
       }
     </style>
@@ -46,8 +45,9 @@
     <div class="container">
       <div class="box one"></div>
       <div class="box image"></div>
+    </div>
+    <div class="container">
       <div class="box two"></div>
-      <!-- Kwadrat zastąpiony obrazkiem -->
       <div class="box tree"></div>
       <div class="box four"></div>
     </div>
