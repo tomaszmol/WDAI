@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+  overflow-x: hidden;
+  background: linear-gradient(
+    to bottom,
+    #040e0e,
+    #040e0e,
+    #1d3130,
+    #040e0e,
+    #040e0e
+  );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Navbar*/
+nav {
+  background-color: #1d3130;
+  padding: 1em 2em;
+  border-radius: 3vh;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #a0c9c9;
+}
+
+/* Ramka konakt*/
+.contact-section {
+  text-align: center;
+  padding: 50px 20px;
+  color: #ffffff;
+  background-color: #1d3130;
+  margin: 100px auto;
+  max-width: 80%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-section {
+  margin-top: 120px;
+}
+
+.contact-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+  color: #a0c9c9;
+}
+
+.contact-info p {
+  margin: 0.5em 0;
+  font-size: 1.1rem;
+}
+
+.contact-info strong {
+  color: #a0c9c9;
+}
+
+/* Sekcja formularza kontaktowego */
+.contact-form-section {
+  text-align: center;
+  padding: 50px 20px;
+  color: #ffffff;
+  background-color: #1d3130;
+  margin: 40px auto;
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form-section {
+  margin-top: 20px;
+}
+
+.contact-form-section h1 {
+  font-size: 2rem;
+  margin-bottom: 1em;
+  color: #a0c9c9;
+}
+
+.contact-form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.contact-form-section label {
+  font-weight: bold;
+  color: #a0c9c9;
+}
+
+.contact-form-section input[type="email"],
+.contact-form-section select,
+.contact-form-section textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #a0c9c9;
+  border-radius: 5px;
+  background-color: #333f3e;
+  color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-form-section input[type="submit"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #a0c9c9;
+  color: #1d3130;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-form-section input[type="submit"]:hover {
+  background-color: #81b0b0;
+}
+
+/* Styl stopki */
+footer {
+  width: 100%;
+  background-color: #1d3130;
+  color: #b6bfb0;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Media Queries - Dostosowanie dla różnych rozmiarów ekranu */
+
+/* Małe urządzenia (smartfony) */
+@media (max-width: 600px) {
+  .contact-section,
+  .contact-form-section {
+    padding: 20px 10px;
+    max-width: 90%;
+    margin: 20px auto;
+    margin-top: 140px;
+  }
+}
+
+/* Średnie urządzenia (tablety) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .contact-section,
+  .contact-form-section {
+    padding: 30px 15px;
+  }
+}

@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+  overflow-x: hidden;
+  background: linear-gradient(
+    to bottom,
+    #040e0e,
+    #040e0e,
+    #1d3130,
+    #040e0e,
+    #040e0e
+  );
+}
+
+/* Navbar */
+nav {
+  background-color: #1d3130;
+  padding: 1em 2em;
+  border-radius: 3vh;
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #a0c9c9;
+}
+
+/* Styl dla siatki obrazów */
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 100%;
+  margin: 80px auto 0;
+}
+
+/* Styl dla obrazów */
+.image-grid img {
+  width: calc(
+    (100% / 3) - 20px
+  ); /* Szerokość obrazów na 1/3 szerokości kontenera minus odstęp */
+  height: auto; /* Ustawienie wysokości na auto, aby zachować proporcje */
+  object-fit: cover; /* Utrzymanie proporcji przy przycinaniu */
+}
+
+/* Dostosowanie dla obrazów 1080x1080 */
+.image-grid img:nth-child(8),
+.image-grid img:nth-child(14) {
+  width: calc((100% / 3) - 20px); /* Szerokość na 1/3 kontenera minus odstęp */
+  aspect-ratio: 1 / 1; /* Utrzymanie kwadratowego kształtu */
+  object-fit: contain; /* Umożliwienie pełnego wyświetlenia obrazu bez przycinania */
+}
+
+/* Sekcja filmiku */
+.video-section {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Stylowanie filmiku */
+.video-section video {
+  width: calc(
+    (100% / 3) - 20px
+  ); /* Filmik na 1/3 szerokości kontenera minus odstęp */
+  max-width: 100%;
+  height: auto;
+  border: 3px solid #b6bfb0;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Styl stopki */
+footer {
+  width: 100%;
+  background-color: #1d3130;
+  color: #b6bfb0;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Media Queries - Ustawienia dla różnych rozmiarów ekranu */
+
+/* Małe urządzenia (smartfony) */
+@media (max-width: 600px) {
+  .image-grid img {
+    width: calc(
+      100% - 20px
+    ); /* Obrazy na pełną szerokość dla mniejszych ekranów */
+  }
+
+  /* Dla zdjęć 8 i 14 */
+  .image-grid img:nth-child(8),
+  .image-grid img:nth-child(14) {
+    width: 100%; /* Wypełnia całą szerokość kontenera */
+  }
+
+  /* Filmik na pełną szerokość */
+  .video-section video {
+    width: calc(100% - 20px); /* Filmik na pełną szerokość */
+  }
+}
+
+/* Średnie urządzenia (tablety) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .image-grid img {
+    width: calc(
+      (100% / 2) - 20px
+    ); /* Obrazy na 50% szerokości dla średnich ekranów */
+  }
+
+  /* Dla zdjęć 8 i 14 */
+  .image-grid img:nth-child(8),
+  .image-grid img:nth-child(14) {
+    width: 100%; /* Wypełnia całą szerokość kontenera */
+  }
+
+  /* Filmik na 50% szerokości */
+  .video-section video {
+    width: calc((100% / 2) - 20px); /* Filmik na 50% szerokości */
+  }
+}
+
+/* Duże urządzenia (laptopy i desktopy) */
+@media (min-width: 1025px) {
+  .video-section video {
+    width: calc((100% / 3) - 20px); /* Filmik na 1/3 szerokości kontenera */
+  }
+}
