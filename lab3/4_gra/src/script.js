@@ -1,10 +1,9 @@
 const board = document.querySelector("#board");
 const h2Score = document.querySelector("#score");
 const divReset = document.querySelector("#reset");
-const h2Name = document.querySelector("#name");
 const mouseCursor = document.querySelector("#crosshair");
-const h2Final = document.querySelector("#final");
-const zombieDict = {};
+const finalScore = document.querySelector("#final");
+const zombies = {};
 
 let score = 30;
 let health = 3;
@@ -36,14 +35,14 @@ function spawnZombie(speed, bottom, size) {
 }
 
 function animateZombie(zombie, speed) {
-  let shift = 200;
-  let bgPosition = 0;
+  let step = 200;
+  let windowPosition = 0;
   let position = 0;
 
-  zombieDict[zombie.id] = setInterval(() => {
-    zombie.style.backgroundPositionX = bgPosition + shift + "px";
+  zombies[zombie.id] = setInterval(() => {
+    zombie.style.backgroundPositionX = windowPosition + step + "px";
     zombie.style.left = 100 - position + "vw";
-    bgPosition -= shift;
+    windowPosition -= step;
     position++;
 
     if (score <= 0) {
@@ -51,9 +50,9 @@ function animateZombie(zombie, speed) {
       gameEnd();
     }
 
-    if (bgPosition == -1800) bgPosition = 0;
+    if (windowPosition == -1800) windowPosition = 0;
 
-    if (position == 115) {
+    if (position == 100) {
       zombie.remove();
       health -= 1;
       for (let i = health; i < 3; i++)
@@ -61,7 +60,7 @@ function animateZombie(zombie, speed) {
 
       if (health <= 0) gameEnd();
 
-      clearInterval(zombieDict[zombie.id]);
+      clearInterval(zombies[zombie.id]);
     }
   }, speed);
 }
@@ -87,7 +86,7 @@ function zombieHit() {
   score += 20;
   h2Score.textContent = score;
 
-  clearInterval(zombieDict[this.id]);
+  clearInterval(zombies[this.id]);
   this.remove();
 }
 
@@ -111,6 +110,10 @@ function loadGame() {
 }
 
 function resetGame() {
+  const gameOverMusic = document.getElementById("game-over-music");
+  gameOverMusic.pause();
+  gameOverMusic.currentTime = 0;
+
   divReset.style.transform = "translateY(200%)";
   for (let i = 0; i < 3; i++)
     document.querySelectorAll("img")[i].src = "../images/full_heart.png";
@@ -120,16 +123,20 @@ function resetGame() {
 function gameEnd() {
   clearInterval(gameRunning);
 
-  Object.keys(zombieDict).forEach(function (key) {
-    clearInterval(zombieDict[key]);
+  Object.keys(zombies).forEach(function (key) {
+    clearInterval(zombies[key]);
   });
 
   board.removeEventListener("click", boardShot);
-  h2Final.textContent = score;
+  finalScore.textContent = score;
   window.removeEventListener("mousemove", crosshairMove);
   document.body.style.cursor = "default";
 
   divReset.style.transform = "translateY(0%)";
+
+  const gameOverMusic = document.getElementById("game-over-music");
+  gameOverMusic.currentTime = 0;
+  gameOverMusic.play();
 
   document.getElementById("resetGame").addEventListener("click", resetGame);
 }
